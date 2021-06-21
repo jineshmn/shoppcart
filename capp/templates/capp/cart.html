@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+<body>
+    <div class="row">
+    <div class= "col-md">
+        <div class=" card card-body">
+            <center>
+                <h5>My Cart</h5>
+            </center>
+            <a class="btn btn-sm btn-info" href="{% url 'home' %}">Home</a>
+        </div>
+        <div class=" card card-body">
+           
+            <table class="table" align="center">
+                <center>
+                <tr>  
+                
+                    <th>Category</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                
+                    <th></th>
+                </tr>
+                 {% for i in cartitems %}
+                 <tr>
+                   
+                    <td>{{i.product.categories.resname}}</td>
+                    
+                    <td>{{i.product.dname}}</td>
+                    <td>{{i.product.price}}</td>
+                    <td>{{i.product.quantity}}</td>
+                    <td>{{i.product.amount}}</td>
+                 
+                    <td><a ></a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete' i.id %}">Delete</a></td>
+                    
+                    
+                 </tr>
+                <a 
+                
+                 {% endfor %}
+                 <a class="btn btn-sm btn-info" href="{% url 'placeorder' %}" >Place Order</a>
+                 
+                </center>
+            </table>
+            <table>
+                <td>Total Amount</td>
+
+                <td>{{c}}</td>
+            </table>
+        
+        </div>
+    </div>
+</div>
+</body>
+</html>

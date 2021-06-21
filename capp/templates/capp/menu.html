@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+        .w3-button {width:50px;}
+        </style>
+    </head>
+<body>
+    <div class="row">
+    <div class= "col-md">
+        <div class=" card card-body">
+            <center>
+                
+                <h5>You have entered in {{cate.resname}} section!</h5>
+                <h5>Products</h5>
+            </center>
+            
+            <a class="btn btn-sm btn-info" role="button"  href="{% url 'home' %}">Home</a>
+        </div>
+        <div class=" card card-body">
+           
+
+        
+           
+            <table class="table" align="center">
+                <center>
+
+                <tr>  
+                
+                    <th>Product Name</th>
+                    <th>Price</th>
+                
+                    <th>Quantity</th>
+                </tr>
+                 {% for i in products  %}
+                 <form name="quantityform" method="post" action="{% url 'addtocart' i.id %}">
+                    {% csrf_token %}
+                 <tr>
+                   
+                    <td>{{i.dname}}</td>
+                    
+                    <td>{{i.price}}</td>
+                
+                    <td><input type="number" id="num" name="quantity" value= 0 #qua ></td>
+                    <td><button class="btn btn-success" type="submit">Add to Cart</button> </td>
+                    
+                 </tr>
+                </form>
+                 {% endfor %}
+                </center>
+            </table>
+        
+        </div>
+    </div>
+</div>
+</body>
+</html>
